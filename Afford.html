@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Fetcher</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <div>
+       <img class="thumbnail" src="bvc-head.png">
+    </div>
+    <marquee direction="right">
+    <h1 class="bvc">BONAM VENKATA CHALAMAYYA INSTITUTE OF TECHNOLOGY AND SCIENCE</h1>
+ </marquee>
+
+<center>
+  <button onclick="fetchPrimes()">Fetch Prime Numbers</button>
+  <button onclick="fetchEven()">Fetch Even Numbers</button> 
+  <button onclick="fetchRandom()">Fetch Random Numbers</button>
+</center>
+
+<script>
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Failed to fetch numbers');
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching numbers:', error.message);
+  }
+}
+
+function fetchPrimes() {
+  fetchData('http://20.244.56.144/test/primes');
+}
+
+function fetchEven() {
+  fetchData('http://20.244.56.144/test/even');
+}
+function fetchRandom(){
+  fetchData("http://20.244.56.144/rand");
+}
+</script>
+</body>
+</html>
